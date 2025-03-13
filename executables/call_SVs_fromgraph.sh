@@ -24,9 +24,9 @@ while getopts ${OPTSTRING} opt
 do
     case ${opt}
         in
-	o)
+	g)
 	 graph=${OPTARG};;
-	r)
+	o)
 	 output_prefix=${OPTARG};;
         :)
          echo 'option -${OPTARG} requires an argument.'
