@@ -19,7 +19,4 @@ script=${def_booker}/mg615512/scripts/executables
 #minigraph executable
 export PATH="${def_booker}/mg615512/bin/minigraph:$PATH"
 
-${script}/generate_graph.sh \
-	-t 24 \
-	-r ${int_prim} -q ${int_alt} \
-	-o ${out}
+${script}/generate_graph.sh -t 24 -r ${int_prim} -q ${int_alt} -o ${out}
