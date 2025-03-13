@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if [ $# -le 8 ] ; then
+if [[ ( $@ == "--help") ||  $@ == "-h" ]]
+then
     echo "Usage: ./generate_graph.sh -t <THREADS> -r <REF.FA/GFA> -q <QUERY1.FA> -x <QUERY2.FA> -y <QUERY3.FA> -z <QUERY4.FA> -o <OUT_PREFIX>"
     echo ""
     echo "A script to generate a genome alignment graph (GFA) of up to 5 genomes using minigraph."
@@ -16,8 +17,7 @@ if [ $# -le 8 ] ; then
     echo "-o <OUTPUT_PREFIX>   The prefix to the paths of generated graph. "
     echo ""
     echo ""
-
-    exit 0
+	exit 0
 fi
 
 OPTSTRING="t:r:q:o:xyz"
