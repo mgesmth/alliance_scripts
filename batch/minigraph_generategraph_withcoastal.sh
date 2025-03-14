@@ -14,9 +14,9 @@ set -o errexit
 def_booker=/home/mg615512/projects/def-booker
 interior_prim=${def_booker}/shared_dougfir/interior_douglas_fir/renamed_scaffolds/interiorDF_primary_scaffrenamed.fa
 interior_alt=${def_booker}/shared_dougfir/interior_douglas_fir/renamed_scaffolds/interiorDF_alternate_scaffrenamed.fa
-coastal=${def_booker}/shared_dougfir/coastal_douglas_fir/coastal_douglas_fir_2025_assembly.fasta
-out1=${def_booker}/mg615512/minigraph_out/interior_primalt_renamed
-out2=${def_booker}/mg615512/minigraph_out/interior_primalt_renamed_coastal
+coastal=${def_booker}/shared_dougfir/coastal_douglas_fir/renamed_scaffolds/coastal_douglas_fir_2025_assembly.fasta
+out1=/home/mg615512/scratch/minigraph_out/interior_primalt_renamed
+out2=/home/mg615512/scratch/minigraph_out/interior_primalt_renamed_coastal
 script=${def_booker}/mg615512/scripts/executables
 
 #executable
