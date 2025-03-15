@@ -9,11 +9,9 @@
 #SBATCH -o callSVs_interior.%j.out
 #SBATCH -e callSVs_interior.%j.err
 
-set -o errexit
-
 def_booker=/home/mg615512/projects/def-booker
-interior=${def_booker}/mg615512/minigraph_out/interior_primalt.gfa
-out=${def_booker}/mg615512/minigraph_out/interior_SVs
+interior=/home/mg615512/scratch/minigraph_out/interior_primalt_renamed.gfa
+out=/home/mg615512/scratch/minigraph_out/interior_SVs
 script=${def_booker}/mg615512/scripts/executables
 
 #executable
