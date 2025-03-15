@@ -21,9 +21,8 @@ script=${def_booker}/mg615512/scripts/executables
 
 #executable
 export PATH="${def_booker}/mg615512/bin/minigraph:$PATH"
-export PATH="${def_booker}/mg615512/bin/gfatools:$PATH"
 
-${script}/generate_graph.sh -t 24 -r ${interior_prim} -q ${interior_alt} -o ${out1}
-${script}/generate_graph.sh -t 24 -r ${out1}.gfa -q ${coastal} -o ${out2}
+#${script}/generate_graph.sh -t 24 -r ${interior_prim} -q ${interior_alt} -o ${out1}
+#${script}/generate_graph.sh -t 24 -r ${out1}.gfa -q ${coastal} -o ${out2}
 ${script}/call_SVs_fromgraph.sh -g ${out1}.gfa -o ${out1}
 ${script}/call_SVs_fromgraph.sh -g ${out2}.gfa -o ${out2}
