@@ -39,8 +39,4 @@ do
     esac
 done
 
-set -o errexit
-set -o nounset
-set -o pipefail
-
 gfatools bubble ${graph} > ${output_prefix}.bed
