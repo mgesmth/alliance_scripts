@@ -9,6 +9,7 @@ then
     echo "positional arguments:"
     echo ""
     echo "-t <THREADS>         Number of threads to use for mapping."
+    echo "-l <CHAINLEN>        Minimum chain length to consider. Default 50k."
     echo "-r <REF.FA/.GFA>     Path to the reference genome to use in graph generation."
     echo "-q <QUERY1.FA>       Path to the first query genome to be aligned to the reference."
     echo "-x <QUERY2.FA>       Path to the second query genome to be aligned. Optional."
@@ -20,7 +21,10 @@ then
 	exit 0
 fi
 
-OPTSTRING="t:r:q:o:xyz"
+#Defaults
+chain="50k"
+
+OPTSTRING="t:r:q:o:xyzl"
 while getopts ${OPTSTRING} opt
 do
     case ${opt}
@@ -39,9 +43,6 @@ do
 	 if [[ -n $nextopt && $nextopt != -* ]] ; then
 	  OPTIND=$((OPTIND + 1))
 	  queries+=" $nextopt"
-	 #if the next positional parameter is an option flag or is empty, query 2 is empty
-	 else
-	  echo "Second query genome not supplied. Moving on."
 	 fi
 	;;
 	y)
@@ -50,9 +51,6 @@ do
          if [[ -n $nextopt && $nextopt != -* ]] ; then
           OPTIND=$((OPTIND + 1))
           queries+=" $nextopt"
-         #if the next positional parameter is an option flag or is empty, query 2 is empty
-         else
-          echo "Third query genome not supplied. Moving on."
          fi
 	;;
         z)
@@ -61,11 +59,15 @@ do
          if [[ -n $nextopt && $nextopt != -* ]] ; then
           OPTIND=$((OPTIND + 1))
           queries+=" $nextopt"
-         #if the next positional parameter is an option flag or is empty, query 2 is empty
-         else
-          echo "Fourth query genome not supplied. Moving on."
          fi
 	;;
+        l)
+         eval nextopt=\${$OPTIND}
+         if [[ -n $nextopt && $nextopt != -* ]] ; then
+          OPTIND=$((OPTIND + 1))
+          chain="$nextopt"
+         fi
+        ;;
         :)
          echo 'option -${OPTARG} requires an argument.'
          exit 1
@@ -81,4 +83,4 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-minigraph -cxggs -t ${threads} $reference $queries > ${output_prefix}.gfa
+minigraph -cxggs -t ${threads} -l ${chain} $reference $queries > ${output_prefix}.gfa
