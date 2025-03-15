@@ -2,7 +2,7 @@
 
 if [[ ( $@ == "--help") ||  $@ == "-h" ]]
 then
-    echo "Usage: ./call_SVs_fromgraph_minigraph.sh -t <THREADS> -g <ALN.GFA> -q <QUERY.FA> -o <OUT_PREFIX>"
+    echo "Usage: ./call_SVs_fromgraph_minigraph.sh -t <THREADS> -l <CHAINLEN> -g <ALN.GFA> -q <QUERY.FA> -o <OUT_PREFIX>"
     echo ""
     echo "Call structural variation from a GFA file."
     echo ""
@@ -12,7 +12,8 @@ then
     echo ""
     echo "positional arguments:"
     echo ""
-    echo "-t <THREADS>         Number of threads to use for alignment. Default 16."
+    echo "-t <THREADS>         Number of threads to use for alignment. Default 1."
+    echo "-l <CHAINLEN>        Minimum chain length to consider. Default 50k."
     echo "-g <ALN.GFA>         Path to genome alignment graph."
     echo "-q <QUERY.FA>        Path to the query genome to be tracked through alignment."
     echo "-o <OUTPUT_PREFIX>   The prefix to bed file to be generated. "
@@ -21,7 +22,9 @@ then
 	exit 0
 fi
 
-threads=16
+#DEFAULTS
+threads=1
+chain="50k"
 
 OPTSTRING="g:q:o:tl"
 while getopts ${OPTSTRING} opt
