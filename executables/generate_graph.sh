@@ -42,6 +42,7 @@ do
 	  OPTIND=$((OPTIND + 1))
 	  threads="$nextopt"
 	 fi
+	;;
 	x)
          eval nextopt=\${$OPTIND}
 	 #if the next positional parameter is not an option flag, define query2 as the parameter:
