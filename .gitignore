@@ -1,1 +1,2 @@
-#ignore
+executables/test_callSVs_fromgraph_minigraph.sh
+executables/test_generate_graph.sh
