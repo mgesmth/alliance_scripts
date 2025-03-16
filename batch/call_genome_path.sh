@@ -11,7 +11,9 @@
 export PATH="/home/mg615512/projects/def-booker/mg615512/bin/minigraph:$PATH"
 
 minidir=/home/mg615512/scratch/minigraph_out
-graph=${minidir}/interior_primalt_renamed.gfa
+graph=${minidir}/interior_primalt_renamed_coastal.gfa
 alt=/home/mg615512/projects/def-booker/shared_dougfir/interior_douglas_fir/renamed_scaffolds/interiorDF_alternate_scaffrenamed.fa
+script=/home/mg615512/projects/def-booker/mg615512/scripts/executables
 
-minigraph -cxasm --call -t16 ${graph} ${coastal} > ${minidir}/intalt_asmcall.bed
+${script}/call_SVs_fromgraph_minigraph.sh -t 16 -g ${graph} -q ${alt} -o ${minidir}/interior_alt_SVcall
+
