@@ -8,7 +8,7 @@ then
     echo ""
     echo "positional arguments:"
     echo ""
-    echo "-t <THREADS>         Number of threads to use for mapping. Default 1."
+    echo "-t <THREADS>         Number of threads to use for mapping. Default."
     echo "-l <CHAINLEN>        Minimum chain length to consider. Default 50k."
     echo "-r <REF.FA/.GFA>     Path to the reference genome to use in graph generation."
     echo "-q <QUERY1.FA>       Path to the first query genome to be aligned to the reference."
@@ -37,12 +37,7 @@ do
 	o)
 	 output_prefix=${OPTARG};;
 	t)
-	 eval nextopt=\${OPTIND}
-	 if [[ -n $nextopt && $nextopt != -* ]] ; then
-	  OPTIND=$((OPTIND + 1))
-	  threads="$nextopt"
-	 fi
-	;;
+	 threads=${OPTARG};;
 	x)
          eval nextopt=\${$OPTIND}
 	 #if the next positional parameter is not an option flag, define query2 as the parameter:
