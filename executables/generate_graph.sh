@@ -23,9 +23,9 @@ fi
 
 #Defaults
 chain="50k"
-threads="1"
+kmer=19
 
-OPTSTRING="r:q:o:tlxyz"
+OPTSTRING="t:r:q:o:klxyz"
 while getopts ${OPTSTRING} opt
 do
     case ${opt}
@@ -38,6 +38,8 @@ do
 	 output_prefix=${OPTARG};;
 	t)
 	 threads=${OPTARG};;
+        k)
+         kmer=${OPTARG};;
 	x)
          eval nextopt=\${$OPTIND}
 	 #if the next positional parameter is not an option flag, define query2 as the parameter:
@@ -84,4 +86,4 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-minigraph -cxggs -t ${threads} -l ${chain} $reference $queries > ${output_prefix}.gfa
+minigraph -cxggs -t ${threads} -l ${chain} -k ${kmer} "$reference" "$queries" > ${output_prefix}.gfa
