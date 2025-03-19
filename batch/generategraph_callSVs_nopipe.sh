@@ -10,6 +10,7 @@
 #SBATCH -e generategraph_nopipe.%j.err
 
 #SO over minigraph being a little bitch with my alignment. Ditching the pipe to see if that helps.
+#these scaffolds are ~98% of interior, ~93% of coastal
 
 booker=/home/mg615512/projects/def-booker
 minidir=/home/mg615512/scratch/minigraph_out
