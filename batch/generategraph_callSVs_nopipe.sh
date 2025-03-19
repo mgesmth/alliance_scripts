@@ -2,7 +2,7 @@
 #SBATCH --job-name=generategraph
 #SBATCH --account=def-booker
 #SBATCH --cpus-per-task=24
-#SBATCH --mem=750G
+#SBATCH --mem=500G
 #SBATCH --time=12:00:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=meg8130@student.ubc.ca
@@ -12,12 +12,12 @@
 #SO over minigraph being a little bitch with my alignment. Ditching the pipe to see if that helps.
 
 booker=/home/mg615512/projects/def-booker
+minidir=/home/mg615512/scratch/minigraph_out
 shared=${booker}/shared_dougfir
-intprim=${shared}/interior_douglas_fir/renamed_scaffolds/interiorDF_primary_scaffrenamed.fa
-intalt=${shared}/interior_douglas_fir/renamed_scaffolds/interiorDF_alternate_scaffrenamed.fa
-coastal=${shared}/coastal_douglas_fir/renamed_scaffolds/coastal_douglas_fir_2025_assembly.fasta
-out_gfa=/home/mg615512/scratch/minigraph_out/interior_coastal_retry2.gfa
-out_bed=/home/mg615512/scratch/minigraph_out/interior_coastal_retry2.bed
+intprim=${minidir}/interiorDF_primary_scaffrenamed_1Mb.fa
+intalt=${minidir}/interiorDF_alternate_scaffrenamed_1Mb.fa
+coastal=${minidir}/coastalDF_scaffrenamed_sorted_1Mb.fa
+out=${minidir}/interior_coastal_1Mb
 
 #TEST VARIABLES - SUCCESS
 #echo $intprim
@@ -31,8 +31,8 @@ export PATH="${booker}/mg615512/bin/minigraph:$PATH"
 export PATH="${booker}/mg615512/bin/gfatools:$PATH"
 
 #-U flag is from developer for another genome of similar size
-minigraph -cxggs -t 24 -k 21 -U 10,50 ${intprim} ${intalt} ${coastal} > ${out_gfa}
-gfatools bubble ${outdir}/interior_coastal_retry2.gfa > ${out_bed}
+minigraph -cxggs -t 24 -U 10,50 ${intprim} ${intalt} ${coastal} > ${out}.gfa
+gfatools bubble ${out}.gfa > ${out}.bed
 
 ##TEST - SUCCESS
 #minigraph -cxggs -l 10k MT.gfa MT-chimp.fa MT-orangA.fa > test_nopipe.gfa
