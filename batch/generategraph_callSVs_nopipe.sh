@@ -2,7 +2,7 @@
 #SBATCH --job-name=generategraph
 #SBATCH --account=def-booker
 #SBATCH --cpus-per-task=24
-#SBATCH --mem=500G
+#SBATCH --mem=750G
 #SBATCH --time=12:00:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=meg8130@student.ubc.ca
