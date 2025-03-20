@@ -27,7 +27,7 @@ out=${minidir}/interior_first20scaffolds
 #echo ${out_bed}
 
 #EXECUTABLES
-export PATH="${booker}/mg615512/bin/minigraph:$PATH"
+export PATH="${booker}/mg615512/bin/minigraph-0.21:$PATH"
 export PATH="${booker}/mg615512/bin/gfatools:$PATH"
 
 #-U flag is from developer for another genome of similar size
