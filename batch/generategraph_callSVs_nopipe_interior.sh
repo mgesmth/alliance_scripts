@@ -2,8 +2,8 @@
 #SBATCH --job-name=generategraph
 #SBATCH --account=def-booker
 #SBATCH --cpus-per-task=24
-#SBATCH --mem=750G
-#SBATCH --time=12:00:00
+#SBATCH --mem=460G
+#SBATCH --time=6:00:00
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=meg8130@student.ubc.ca
 #SBATCH -o generategraph_nopipe.%j.out
@@ -15,8 +15,8 @@
 booker=/home/mg615512/projects/def-booker
 minidir=/home/mg615512/scratch/minigraph_out
 shared=${booker}/shared_dougfir
-intprim=${minidir}/interiorDF_primary_scaffrenamed_20.fa
-intalt=${minidir}/interiorDF_alternate_scaffrenamed_20.fa
+intprim=${minidir}/interiorDF_primary_scaffrenamed_13.fa
+intalt=${minidir}/interiorDF_alternate_scaffrenamed_13.fa
 out=${minidir}/interior_first20scaffolds
 
 #TEST VARIABLES - SUCCESS
